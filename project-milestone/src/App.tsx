@@ -7,6 +7,7 @@ import Modal from "./components/Modal";
 // import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Home from "./pages/Home";
 // import ProductCategory from "./pages/ProductCategory";
 // import ProductDetail from "./pages/ProductDetail";
 // import ShoppingCart from "./pages/ShoppingCart";
@@ -21,7 +22,7 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        {/* <Route path="/" exact component={Login} /> Halaman default */}
+        <Route path="/" element={<Home />} />{" "}
         <Route
           path="/login"
           element={

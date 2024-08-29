@@ -14,6 +14,11 @@ const Header: React.FC = () => {
               </Link>
             </li>
             <li>
+              <Link to="/cart" className="hover:text-blue-300">
+                Cart
+              </Link>
+            </li>
+            <li>
               <Link to="/login" className="hover:text-blue-300">
                 Login
               </Link>
@@ -21,11 +26,6 @@ const Header: React.FC = () => {
             <li>
               <Link to="/register" className="hover:text-blue-300">
                 Register
-              </Link>
-            </li>
-            <li>
-              <Link to="/cart" className="hover:text-blue-300">
-                Cart
               </Link>
             </li>
           </ul>

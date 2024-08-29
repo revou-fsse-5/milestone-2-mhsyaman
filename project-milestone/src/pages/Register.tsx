@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { registerUser } from "../services/api";
 
 const Register: React.FC = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const userData = await registerUser(name, email, password); // Memanggil fungsi registerUser
+      console.log("User registered:", userData);
+      setSuccess("Registration successful! You can now log in.");
+      setError(""); // Reset error message
+    } catch (error) {
+      setError("Registration failed. Please try again.");
+      setSuccess(""); // Reset success message
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-56 bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">

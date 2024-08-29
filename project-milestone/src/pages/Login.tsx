@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { loginUser } from "../services/api";
 
 const Login: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const userData = await loginUser(email, password); // Memanggil fungsi loginUser
+      console.log("User logged in:", userData);
+      // Lakukan sesuatu setelah login berhasil, seperti menyimpan token atau mengarahkan pengguna
+    } catch (error) {
+      setError("Login failed. Please check your credentials.");
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-56 bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">

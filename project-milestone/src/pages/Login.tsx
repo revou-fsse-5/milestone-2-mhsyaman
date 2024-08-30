@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { loginUser } from "../services/api";
+import { Link } from "react-router-dom";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -49,6 +50,11 @@ const Login: React.FC = () => {
             Login
           </button>
         </form>
+        <div className="mt-4 text-center">
+          <Link to="/register" className="text-blue-600 hover:underline">
+            Belum punya akun? Daftar
+          </Link>
+        </div>
       </div>
     </div>
   );

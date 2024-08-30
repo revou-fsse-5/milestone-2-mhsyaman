@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../services/api";
+import { Link } from "react-router-dom";
 
 const Register: React.FC = () => {
   const [name, setName] = useState("");
@@ -25,7 +26,7 @@ const Register: React.FC = () => {
     <div className="flex items-center justify-center min-h-56 bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
-        <form>
+        <form onSubmit={handleRegister}>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Name
@@ -63,6 +64,11 @@ const Register: React.FC = () => {
             Register
           </button>
         </form>
+        <div className="mt-4 text-center">
+          <Link to="/login" className="text-blue-600 hover:underline">
+            Sudah memiliki akun? Login
+          </Link>
+        </div>
       </div>
     </div>
   );

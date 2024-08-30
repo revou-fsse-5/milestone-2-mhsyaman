@@ -21,8 +21,9 @@ function App() {
   return (
     <Router>
       <Header />
+      <Home />
       <Routes>
-        <Route path="/" element={<Home />} />{" "}
+        {/* <Route path="/" element={<Home />} />{" "} */}
         <Route
           path="/login"
           element={

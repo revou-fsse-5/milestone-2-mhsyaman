@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { loginUser } from "../services/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
+import { X } from 'lucide-react';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,6 +16,7 @@ const Login: React.FC = () => {
       const userData = await loginUser(email, password); // Memanggil fungsi loginUser
       console.log("User logged in:", userData);
       // Lakukan sesuatu setelah login berhasil, seperti menyimpan token atau mengarahkan pengguna
+      navigate('/dashboard');
     } catch (error) {
       setError("Login failed. Please check your credentials.");
     }
@@ -21,6 +25,20 @@ const Login: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-56 bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">
+        {/* Exit button */}
+        <button 
+          onClick={() => navigate('/')} 
+          className="absolute top-2 right-2 p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors duration-200"
+        >
+          <X size={24} className="text-gray-600" />
+        </button>
+
+        <img
+          className="mx-auto h-40 w-auto"
+          src="https://www.svgrepo.com/show/354568/woocommerce.svg?color=indigo&shade=600"
+          alt="Your Company"
+        />
+
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form>
           <div className="mb-4">

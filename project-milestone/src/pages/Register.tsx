@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../services/api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { X } from 'lucide-react';
 
 const Register: React.FC = () => {
   const [name, setName] = useState("");
@@ -8,6 +9,8 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,6 +28,20 @@ const Register: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-56 bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-96">
+        {/* Exit button */}
+        <button 
+          onClick={() => navigate('/')} 
+          className="absolute top-2 right-2 p-2 rounded-full hover:bg-gray-200"
+        >
+          <X size={24} className="text-gray-600"/>
+        </button>
+
+        <img
+          className="mx-auto h-40 w-auto"
+          src="https://www.svgrepo.com/show/354568/woocommerce.svg?color=indigo&shade=600"
+          alt="Your Company"
+        />
+
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
         <form onSubmit={handleRegister}>
           <div className="mb-4">
